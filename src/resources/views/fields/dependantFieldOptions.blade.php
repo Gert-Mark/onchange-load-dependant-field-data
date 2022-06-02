@@ -32,11 +32,12 @@
             theme: 'bootstrap',
             multiple: false,
             placeholder: placeholder,
-            allowClear: true,
+            allowClear: true
         });
 
         function resetOptions(options) {
-            $('#' + fieldID).html(options)
+            $('#' + fieldID).html(options);
+            $('#' + fieldID).val({{$field['value']}});
         }
 
         function fetchOptions() {
