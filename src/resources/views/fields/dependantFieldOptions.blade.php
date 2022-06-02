@@ -39,18 +39,14 @@
             $('#' + fieldID).html(options)
         }
 
-        $("select[name='" + dependencyFieldName + "']").change(function () {
-
-            let value = $(this).val();
-
+        function fetchOptions() {
+            let value = $("select[name='" + dependencyFieldName + "']").val();
             if (!value) {
                 return resetOptions('')
             }
-
             let url = "{{$field['source']}}";
             let data = {};
             data[dependencyFieldName] = value
-
             $.ajax({
                 url: url,
                 data: data,
@@ -65,10 +61,13 @@
 
                 resetOptions(options);
             });
+        }
 
+        $("select[name='" + dependencyFieldName + "']").change(function () {
+            fetchOptions();
         })
-
-    }, 500);
+        fetchOptions();
+    },500);
 
 </script>
 
